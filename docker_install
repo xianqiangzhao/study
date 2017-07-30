@@ -1,0 +1,46 @@
+windows 7 64bit install 
+
+1,download  
+DockerToolbox
+2,download 
+boot2docker.iso
+3,install DockerToolbox
+
+4，把 boot2docker.iso  copy 到
+  C:\Users\Administrator\.docker\machine\cache
+5，启动 Docker Quickstart Terminal
+   其实就是启动Docker Toolbox 安装位置的 
+    D:\Program Files\Docker Toolbox\stat.sh 
+   用附带安装上的Oracle VM VirtualBox 创建一个docker manchine .
+6,如果没有错误发生的话，安装就OK了。
+
+验证 安装
+   cmd > docker info 
+
+ 我这里报错，大概意思是服务连接到docker machine ,原因是环境变量的问题，使docker client 无法连接到docker  machine .
+  执行如下命令来查看docker-machine 的环境参数。
+  docker-machine env --shell cmd default
+	SETX DOCKER_TLS_VERIFY=1
+	SETX DOCKER_HOST=tcp://192.168.99.100:2376
+	SETX DOCKER_CERT_PATH=C:\Users\Administrator\.docker\machine\machines\default
+	SETX DOCKER_MACHINE_NAME=default
+	SETX COMPOSE_CONVERT_WINDOWS_PATHS=true
+
+  出来的内容，需要设定到环境变量里面
+
+ 然后 docker info  ，没有错误发生的话就OK。
+
+docker-machine  status    查看 docker-machine 状态
+docker-machine  stop      停止
+docker-machine  restart   重启
+
+来一个hello world  吧
+cmd > docker run hello-world
+使用教程 
+http://www.docker.org.cn/
+https://www.docker.com/docker-windows
+https://docs.docker.com/
+
+国内镜像库( 需要注册 )
+https://c.163.com/
+
