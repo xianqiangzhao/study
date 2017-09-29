@@ -1,0 +1,21 @@
+php-fpm 的io事件处理采用的是I/O 多路复用（ IO multiplexing）
+io概念背景参照：https://segmentfault.com/a/1190000003063859
+select，poll，epoll都是IO多路复用的机制。I/O多路复用就是通过一种机制，一个进程可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），
+能够通知程序进行相应的读写操作。
+
+源代码在
+php-7.1.6\sapi\fpm\fpm\events
+
+|-poll.h
+|-devpoll.c
+|-kqueue.c
+|-port.h
+|-devpoll.h
+|-epoll.c
+|-select.h
+|-epoll.h
+|-poll.c
+|-kqueue.h
+|-port.c
+|-select.c
+
